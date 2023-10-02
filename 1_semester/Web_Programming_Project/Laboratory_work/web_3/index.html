@@ -20,7 +20,28 @@
 <!-- Основное содержимое страницы -->
 <main class="container">
 
-    <form class="border_form">
+    <!-- Использование выпадающего списка -->
+    <select class="dropdown_button">
+        <option value="">Выберите программу</option>
+        <optgroup label="Бакалавриат">
+            <option value="Audi">Прикладная математика</option>
+            <option value="BMW">Компьютерная безопасность</option>
+            <option value="Mercedes">Информационная безопасность</option>
+        </optgroup>
+        <optgroup label=Специалитет>
+            <option value="Apple">Прикладная математика и информатика</option>
+            <option value="Banana">Физика</option>
+            <option value="Orange">Химия</option>
+        </optgroup>
+        <optgroup label="Магистратура">
+            <option value="Red">Прикладная информатика</option>
+            <option value="Blue">Аналитика цифрового следа</option>
+            <option value="Green">Методы информационной безопасности</option>
+        </optgroup>
+    </select>
+
+
+    <fieldset class="border_form">
 
         <label>Имя<br></label>
         <input class="input_button" type="text">
@@ -34,10 +55,10 @@
         <label>День рождения<br></label>
         <input class="input_button" type="date">
 
-    </form>
+    </fieldset>
 
     <!--Информация о профиле обучения-->
-    <form class="border_form">
+    <fieldset class="border_form">
 
         <label>Школа<br></label>
         <input class="input_button" type="text">
@@ -45,10 +66,10 @@
         <label>Код специальности<br></label>
         <input class="input_button" type="text" placeholder="02-03-01">
 
-    </form>
+    </fieldset>
 
     <!--Информация о контактных данных и пароль-->
-    <form class="border_form">
+    <fieldset class="border_form">
 
         <label>Почта<br></label>
         <input class="input_button" type="text" placeholder="ivanov.vv@students.dvfu.ru">
@@ -56,17 +77,17 @@
         <label>Пароль<br></label>
         <input class="input_button" type="password">
 
-    </form>
+    </fieldset>
 
     <!--Информация о документах-->
-    <form class="border_form">
+    <fieldset class="border_form">
 
         <label>Прикрепите справку, подтверждающую ваш статус студента<br></label>
 
         <input class="input_button_photo" type="file" name="photo" accept="image/*">
         <input class="input_button" type="submit" value="Загрузить" style="margin-top: 20px;">
 
-    </form>
+    </fieldset>
 
     <!--Кнопка для регистрации-->
     <button class="click_button">Зарегистрироваться</button>
