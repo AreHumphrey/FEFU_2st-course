@@ -67,13 +67,6 @@ input:focus {
     border: 2px solid #795b53;
 }
 
-h2 {
-    padding: 10px;
-    margin-top: 20px;
-    color: #795b53;
-    font-size: 30px;
-}
-
 ::placeholder {
     color: rgba(121, 91, 83, 0.75);
 }
@@ -111,4 +104,10 @@ h2 {
 
 .click_button:hover {
     background-color: rgba(121, 91, 83, 1);
+}
+
+label {
+    padding: 30px;
+    color: #795b53;
+    font-size: 30px;
 }
