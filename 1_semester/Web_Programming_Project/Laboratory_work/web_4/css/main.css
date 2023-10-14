@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #a21b08;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 70px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.container_basement {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    line-height: 1.5;
+    background-color: #a21b08;
+}
+
+.book-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-item {
+    margin-bottom: 10px;
+}
+
+.book-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.book-description {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.container_1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text {
+    flex: 1;
+    margin-right: 40px;
+}
+
+.image {
+    flex: 1;
+    max-width: 400px;
+    margin-right: -160px;
+    margin-left: 10px;
+}
+
+.all_text {
+    line-height: 1.5;
+}
+
+h3 {
+    color: #a21b08;
+}
+
+.ul_class {
+    list-style-type: none;
+    padding: 0;
+}
+
+.li_class::before {
+    content: "•";
+    color: #a21b08;
+    margin-right: 5px;
+}
+
+#header_thing {
+    text-align: center;
+    font-family: Verdana;
+}
+
+#for_font, .text_in_comment {
+    font-family: Verdana;
+}
+
+#for_center, .cells_in_table{
+    text-align: center;
+}
+
+table, td, tr {
+    border: 1.75px solid  #a21b08;
+    margin: auto;
+}
+
+input[type='text'], textarea {
+    background-color: rgb(241, 241, 241);
+    border: 2px solid #a21b08;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #a21b08;
+}
+
+a[href] {
+    text-decoration: none;
+    color: #a21b08;
+}
+
+.border_form {
+    border-radius: 10px;
+    display: flex;
+    width: 400px;
+    height: min-content;
+    padding: 20px;
+    margin-bottom: 40px;
+    border: 2.5px solid #a21b08;
+    flex-direction: column;
+
+}
+
+.button_form {
+    background-color: #a21b08;
+    border: 2.5px solid #ffffff;
+    height: 40px;
+
+
+}
+
+.button_form:hover {
+    background-color: rgb(108, 33, 14);
+}
+
+.text_button {
+    font-size: 12px;
+    color: white;
+}
