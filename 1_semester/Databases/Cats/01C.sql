@@ -1,0 +1,1 @@
+SELECT ABS(A + B) AS SUMM FROM ListOfNumbers 
