@@ -73,3 +73,20 @@ li:first-child {
 li:nth-child(2) {
     color: black;
 }
+
+
+#special {
+    background-color: yellow;
+}
+
+.alert {
+    border: 1px solid #595959;
+}
+
+.alert.stop {
+    background-color: red;
+}
+
+.alert.go {
+    background-color: green;
+}
