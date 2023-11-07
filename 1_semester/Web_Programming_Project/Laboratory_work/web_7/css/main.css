@@ -1,0 +1,79 @@
+body {
+    height: 1200px;
+}
+
+
+
+.my_div {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(123, 140, 106);
+    color: white;
+}
+
+#specialDiv {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    background-color: rgb(143, 143, 157);
+}
+
+.div_1 {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(133, 133, 133);
+    color: white;
+    position: absolute;
+}
+
+#specialDiv_1 {
+    position: absolute;
+    top: 250px;
+    left: 20px;
+    background-color: rgb(161, 150, 130);
+}
+
+.my_div_2 {
+    margin-top: 200px;
+    width: 500px;
+    height: 300px;
+    overflow: scroll;
+    margin-left: 150px;
+    position: relative;
+}
+
+.innerDiv {
+    width: 100px;
+    height: 100px;
+    background-color: #524646;
+    color: white;
+    position: sticky;
+    top: 0;
+    left: 10px;
+    z-index: 1;
+}
+
+#innerDivId {
+    position: fixed;
+    top: 80px;
+    left: 10px;
+    z-index: 0;
+}
+
+dt {
+    background-color: #5b5244;
+    color: white;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    margin: 1em 0;
+    bottom: 10px;
+}
+
+#work_6{
+    width: 200px;
+    height: 200px;
+}

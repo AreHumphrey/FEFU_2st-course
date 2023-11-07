@@ -1,0 +1,28 @@
+body{
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    justify-content: space-between;
+}
+
+header {
+    font-size: 40px;
+    padding: 20px;
+    border: 1px solid;
+    background-color: #9b907f;
+}
+
+
+.div_1_4{
+    width: 500px;
+}
+aside{
+    width: 500px;
+}
+
+.content_id{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
