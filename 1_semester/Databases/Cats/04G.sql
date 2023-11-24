@@ -8,7 +8,7 @@ FROM (
         CASE WHEN last_status = 1 THEN 1 ELSE 0 END AS new_statuses,
         CASE WHEN last_status = 2 THEN 1 ELSE 0 END AS completed_statuses
     FROM (
-        SELECT id as ID,
+        SELECT ID AS ID,
         LAST_VALUE(status_type) OVER (
             PARTITION BY STRFTIME('%d', timestamp), task_id
             ORDER BY timestamp 
@@ -20,4 +20,5 @@ FROM (
     )
     GROUP BY timestamp, task_id ORDER BY timestamp
 )
+GROUP BY date;
 
