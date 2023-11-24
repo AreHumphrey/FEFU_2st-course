@@ -1,6 +1,16 @@
-SELECT a.model, SUM(s1.odometer - s2.odometer) AS total_mileage_tampering
-FROM AUTO AS a
-JOIN sellrecord AS s1 ON a.id = s1.auto_id
-JOIN sellrecord AS s2 ON a.id = s2.auto_id AND s2.date < s1.date
+WITH summi AS (
+    SELECT 
+        s.id AS sale_id, 
+        s.auto_id, 
+        s.odometer AS now_odometer, 
+        LAG(s.odometer) OVER(PARTITION BY s.auto_id ORDER BY s.date) AS previous_odometer
+    FROM sellrecord s
+)
+SELECT a.model,
+SUM(
+CASE WHEN su.now_odometer < su.previous_odometer THEN su.previous_odometer - su.now_odometer ELSE 0 END
+) AS probeg
+FROM auto a
+JOIN summi su ON a.id = su.auto_id
 GROUP BY a.model
-ORDER BY total_mileage_tampering DESC;
+ORDER BY probeg DESC;
