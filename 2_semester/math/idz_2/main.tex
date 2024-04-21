@@ -1,0 +1,316 @@
+\documentclass{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english,russian]{babel} 
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{titling} 
+\usepackage{geometry}
+\usepackage{pgfplots}
+\usepackage{esint}
+\pgfplotsset{compat=1.9}
+
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\arabic{section}}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{}{1em}{}
+
+
+\setlength{\droptitle}{-3em} 
+\title{\vspace{-1cm}ИДЗ №2}
+\author{Винницкая Дина Сергеевна}
+\date{Группа: Б9122-02-03-01сцт}
+
+\geometry{a4paper, margin=2cm}
+
+\begin{document}
+	
+	\maketitle
+
+	\section{Вычислить интеграл:} \[
+        \ointop_{|z - \frac{3}{2}| = 1} \frac{z(z + \pi)}{\sin{z}(z - \pi)}\, dz
+        \]
+	\subsection{Решение:}
+        Особые точки: $z = \pi k, \quad k \in \mathbb{Z}$
+        В рассматриваемую область попадают только точки $z = \pi, \quad z = 2\pi$
+        Точка $z = \pi$ является простым полюсом. Найдем вычет в этой точке:
+        $$\underset{z_1}{\text{res}}\ f(z) = \lim\limits_{z\rightarrow \pi} \left[f(z) (z - \pi) \right] = \lim\limits_{z\rightarrow \pi} \frac{(z - \pi)z(z + \pi)}{\sin{z}(z - \pi)} = \left[\begin{array}{cc}
+             t = z - \pi\\
+             z = t + \pi  
+        \end{array} \right] =  \lim\limits_{t\rightarrow 0} = \frac{t(t + \pi) \cdot (t +2\pi)}{t \cdot \sin(t- \pi)} = $$
+        $$=  \lim\limits_{t\rightarrow 0} \frac{(t + \pi)(t + 2\pi)}{(t - \pi)} = \frac{\pi \cdot 2\pi}{-\pi} = -2\pi $$
+         Точка $z = 2\pi$ является простым полюсом. Найдем вычет в этой точке:
+        $$\underset{z_2}{\text{res}}\ f(z) = \lim\limits_{z\rightarrow 2\pi} \left[f(z) (z - 2\pi) \right] = \lim\limits_{z\rightarrow 2\pi} \frac{(z - 2\pi)z(z + \pi)}{\sin{z}(z - \pi)} = \left[\begin{array}{cc}
+             t = z - 2\pi\\
+             z = t + 2\pi  
+        \end{array} \right] =  \lim\limits_{t\rightarrow 0} = \frac{t(t + 2\pi) \cdot (t +3\pi)}{t \cdot \sin(t- \pi)} = $$
+        $$=  \lim\limits_{t\rightarrow 0} \frac{(t + \pi)(t + 2\pi)}{(t - \pi)} =  \lim\limits_{t\rightarrow 0} \frac{(t + 2\pi)\cdot (t + 3\pi)}{(t - \pi)} = \frac{2\pi \cdot 3\pi}{-\pi} = -6\pi$$
+         \[
+        \ointop_{|z - \frac{3}{2}| = 1} \frac{z(z + \pi)}{\sin{z}(z - \pi)}\, dz = 2\pi i \cdot \sum\limits_{i = 1}^{k} \underset{z_i}{\text{res}} f{z} = 2\pi i \cdot (-2\pi - 6\pi) = 2\pi i (-8\pi) = -16\pi^2 i
+        \]
+	\subsection{Ответ: $-16\pi^2 i$}
+
+    
+        \section{Вычислить интеграл:} \[
+        \ointop_{|z| = 2} z^2 \sin{\frac{1}{z^2}}\, dz
+        \]
+	\subsection{Решение:}
+        У этой функции одна особая точка: z = 0. Необходимо использовать разложение в ряд Лорана в окресности вышеуказанной точки, чтобы непосредственно определить ее тип:
+        
+        \[
+         z^2 \sin{\frac{1}{z^2}} = z^2 \left(\frac{1}{z^2} - \frac{1}{3!z^6} + \frac{1}{5!z^{10}} - \ldots\right) = 1 - \frac{1}{3!z^4} + \frac{1}{5!z^8} - \ldots
+        \]
+        Главная часть получившегося ряда содержит бесконечное число членов, из чего следует, что это - существенная особая точка. Тогда ее вычет находится, как:
+        \[
+        \underset{z = 0}{\text{res}}\ f(z) = -\frac{1}{3!} = -\frac{1}{6} 
+        \]
+
+        Пользуясь основной теоремой Коши о вычетах:
+        \[
+        \ointop_{|z| = 2} z^2 \sin{\frac{1}{z^2}}\, dz = 2\pi i \cdot \left( -\frac{1}{6} \right) = -\frac{2\pi i }{6}
+        \]
+        
+                        
+	\subsection{Ответ: $-\frac{2\pi i }{6}$}
+
+
+        \section{Вычислить интеграл: 
+         }
+         \[
+        \ointop_{|z| = 1} \frac{\ch(2z) - 1 - 2z}{z^4 \sin{\frac{2\pi z}{3}}} \, dz
+        \]
+
+	\subsection{Решение:}
+        Несмотря на то, что осбыми точками этой функции $z = \frac{3ik}{2}$, в непосредственный контур попадает только лишь $z = 0$. \\
+        Далее необходимо найти непосредтсвенный тип этой особой точки: 
+        $$f(z) = \frac{\ch{2z} - 1 - 2z^2}{z^4 \sin{\frac{2\pi z}{3}}} = \frac{g(z)}{f(z)}$$
+        $$g(z) = \ch{2z} - 1 - 2z^2, \quad \quad h(z) = z^4 \sin{\frac{2\pi z}{3}}$$
+        Заметим, что $z = 0$ представляет собой простой полюс. Тогда, можно использоавать правило Лапиталя:
+        $$\lim\limits_{z\rightarrow 0} [f(z)z] = \lim\limits_{z\rightarrow 0} \frac{\ch{2z} - 1 - 2z^2}{z^3 \sin{\frac{2\pi z}{3}}} = \lim\limits_{z\rightarrow 0}  \frac{2\ch{2z} - 4z}{3z^2 \sin{\frac{2\pi z}{3}} + \frac{2}{3} 4\pi z^3 \cos{\frac{2\pi z }{3}}} = $$
+        $$ = \lim\limits_{z\rightarrow 0} \frac{8\ch{2z} - 4}{(6 - 4\pi^2 z^2)\sin{\frac{2\pi z}{3}} + (12\pi z - \frac{8}{27} \pi^3 z^3) \cos{\frac{2\pi z}{3}}} = \frac{16}{16\pi} = \frac{1}{\pi}$$
+        По основной теореме Коши о вычетах:
+         
+         \[
+        \ointop_{|z| = 1} \frac{\ch(2z) - 1 - 2z}{z^4 \sin{\frac{2\pi z}{3}}} \, dz = 2\pi i \sum\limits_{i=1}^{n} resf(z) = 2\pi i \cdot \frac{2}{\pi} = 4i
+        \]
+        
+        
+	\subsection{Ответ: $\quad 4i$}
+
+        \section{Вычислить интеграл: 
+         }
+         \[
+        \ointop_{|z - 2i| = 2} \frac{2\sin{\frac{\pi z}{2 + 4i}}}{(z - 1 - 2i)^2 (z - 3 - 2i)} - \frac{\pi}{e^{\frac{\pi z}{2}} + 1} \, dz
+        \]
+        \subsection{Решение:}
+        Необходимо разбить имеющийся интеграл на сумму двух интегралов:
+        \[
+        \ointop_{|z - 2i| = 2} \frac{2\sin{\frac{\pi z}{2 + 4i}}}{(z - 1 - 2i)^2 (z - 3 - 2i)}\, dz - \ointop_{|z - 2i| = 2}  \frac{\pi}{e^{\frac{\pi z}{2}} + 1} \, dz
+        \]
+        Для начала воспользуемся вычетами для нахождения первого интеграла:
+        \[
+        \ointop_{|z - 2i| = 2} \frac{2\sin{\frac{\pi z}{2 + 4i}}}{(z - 1 - 2i)^2 (z - 3 - 2i)}\, dz 
+        \]
+        У подынтегральной функции есть две особые точки $z = 1 + 2i$ и $z = 3 + 2i$. При этом точка $z = 3 + 2i$ не охвачена контуром, по которому проходит интегрирование, и не рассматривается. \\
+        Точка $z = 1 + 2i$ является полюсом второго порядка. Необходимо найти вычет в этой точке: 
+        $$\underset{z = 1 + 2i}{\text{res}}\ f_1(z) = \lim\limits_{z\rightarrow 1 + 2i}  \frac{d}{dz} \left[ \frac{2(z - 1 - 2i)^2 \sin{\frac{\pi z}{2 + 4i}}}{(z - 1 - 2i)^2 (z - 3 - 2i)} \right] =\lim\limits_{z\rightarrow 1 + 2i}  \frac{d}{dz} \left[\frac{2\sin{\frac{\pi z}{2 + 4i}}}{(z - 3 - 2i}  \right] = $$
+        $$\lim\limits_{z\rightarrow 1 + 2i} \left[ \frac{(1 - 2i)\pi}{5(z - 3 - 2i} \cdot \cos{\frac{(1 - 2i)\pi z}{10}} - \frac{2}{(z - 3 - 2i)^2}\cdot \sin{\frac{(1 - 2i)\pi z}{10}} \right]= -\frac{1}{2}  $$
+         \[
+        \ointop_{|z - 2i| = 2} \frac{2\sin{\frac{\pi z}{2 + 4i}}}{(z - 1 - 2i)^2 (z - 3 - 2i)}\, dz = 2\pi i \cdot \underset{z = 1 + 2i}{\text{res}}\ f_1(z) = 2\pi z \cdot ( -\frac{1}{2}) = -\pi i 
+        \]
+        Теперь необходимо рассмотреть второй интеграл:
+        \[
+          \ointop_{|z - 2i| = 2}  \frac{\pi}{e^{\frac{\pi z}{2}} + 1} \, dz
+        \]
+        Чтобы найти особые точки подынтегральной функции, следует решить уравнение: 
+        $$e^{\frac{\pi z}{2}} + 1 = 0 \rightarrow e^{\frac{\pi z}{2}} = -1 e^{\frac{\pi z}{2}} \rightarrow \frac{2\pi i}{2} = \ln{(-1)} = \pi i \rightarrow z = 2i + 2ik, k \in \mathbb{Z}$$
+        Из этих точек только одна охвачена контуром $|z - 2i| = 2$ и должна приниматься во внимание. Эта точка $z = 2i$, являющаяся простым полюсом. Найдем вычет в этой точке, пользуясь правилом Лопиталя:
+        $$\underset{z = 2i}{\text{res}}\ f_2(z) =  \lim\limits_{z\rightarrow 2i}  \frac{\pi(z - 2i) }{e^{\frac{\pi z}{2} } + 1} =  \lim\limits_{z\rightarrow 2i} \frac{\pi}{e^{\frac{\pi z}{2}} + 1} = \frac{\pi}{\frac{\pi}{2}e^{\pi i}} = \frac{2}{e^{\pi i}} =\frac{2}{-1} = -2$$
+        \[
+          \ointop_{|z - 2i| = 2}  \frac{\pi}{e^{\frac{\pi z}{2}} + 1} \, dz = 2\pi i \cdot \underset{z = 1 + 2i}{\text{res}}\ f_2(z) = 2\pi i \cdot (-2) = -4\pi i 
+        \]
+        \[
+        \ointop_{|z - 2i| = 2} \frac{2\sin{\frac{\pi z}{2 + 4i}}}{(z - 1 - 2i)^2 (z - 3 - 2i)} - \frac{\pi}{e^{\frac{\pi z}{2}} + 1} \, dz = \ointop_{|z - 2i| = 2} \frac{2\sin{\frac{\pi z}{2 + 4i}}}{(z - 1 - 2i)^2 (z - 3 - 2i)}\, dz - \ointop_{|z - 2i| = 2}  \frac{\pi}{e^{\frac{\pi z}{2}} + 1} \, dz = 
+        \]
+        $$= -\pi i + 4\pi i = 3\pi i$$
+        \subsection{Ответ: $\quad 3\pi i$}
+        \section{Вычислить интеграл: }
+        \[
+        \int_{0}^{2\pi} \frac{dt}{2\sqrt{2}\sin{t} + 3}
+        \]
+         
+         \subsection{Решение:}
+         Преобразуем в контурный интеграл, используя следующие преобразования:
+         $$z = e^\pi; \quad \cos{t} = \frac{1}{2}\left( z + \frac{1}{z}\right); \quad \sin{t} = \frac{1}{2i} \left( z - \frac{1}{z}\right); \quad dt = \frac{dz}{iz}$$
+         \[
+        \int_{0}^{2\pi} R(\cos{t}, \sin{t}) ,\ dt = \ointop_{|z| = 1} F(z) ,\ dz
+        \]
+        \[
+        \int_{0}^{2\pi} \frac{dt}{2\sqrt{2}\sin{t} + 3} = \ointop_{|z| = 1} \frac{\frac{dz}{iz}}{\frac{\sqrt{2}}{t} (z - \frac{1}{z}) + 3} = \ointop_{|z| = 1} \frac{dz}{\sqrt{2} (z^2 - 1) + 3iz} = \ointop_{|z| = 1} \frac{dz}{\sqrt{2}(z + i\sqrt{2})(z + \frac{i}{\sqrt{2}})}
+        \]
+        Таким образом, подынтегральная функция имеет 2 особые точки: $z = -i\sqrt{2}; \quad z = \frac{-1}{\sqrt{2}}$ \\
+        Точка $z = -i\sqrt{2}$ не попадает в область, ограниченную контуром интегрирования. \\
+        Точка $z = \frac{-1}{\sqrt{2}}$ является простым полюсом. Необходимо вычислить вычет в этой точке:
+         \[
+         \underset{z = \frac{i}{\sqrt{2}}}{\text{res}}\ f(z) = \lim\limits_{\frac{i}{\sqrt{2}}} \left[ f(z)(z + \frac{i}{\sqrt{2})}\right] = \lim\limits_{\frac{i}{\sqrt{2}}} \frac{1}{\sqrt{2}(z + i\sqrt{2})} = \frac{1}{\sqrt{2}(\frac{-i}{\sqrt{2}} + {i}{\sqrt{2}})} = -i
+        \]
+        По основной теореме Коши о вычетах получаем:
+        \[
+         \ointop_{|z| = 1}\frac{dz}{\sqrt{2}(z +\frac{i}{\sqrt{2}}) (z + i\sqrt{2})} = 2\pi i \sum\limits_{i = 1}^{n} resf(z) = 2\pi i \cdot (-i) = 2\pi
+        \]
+        \subsection{Ответ: $\quad 2\pi$}
+
+        \section{Вычислить интеграл: }
+        \[
+        \int_{0}^{2\pi} \frac{dt}{(\sqrt{6} + \sqrt{5}\cos{t})^2}
+        \]
+        \subsection{Решение:}
+        Преобразуем в контурный интеграл, используя следующие преобразования:
+        $$z = e^\pi; \quad \cos{t} = \frac{1}{2}\left( z + \frac{1}{z}\right); \quad \sin{t} = \frac{1}{2i} \left( z - \frac{1}{z}\right); \quad dt = \frac{dz}{iz}$$
+        \[
+        \int_{0}^{2\pi} R(\cos{t}, \sin{t}) ,\ dt = \ointop_{|z| = 1} F(z) ,\ dz
+        \]
+        \[
+        \int_{0}^{2\pi} \frac{dt}{(\sqrt{6} + \sqrt{5}\cos{t})^2} = \ointop_{|z| = 1} \frac{\frac{dz}{iz}}{(\sqrt{6} + \frac{\sqrt{5}}{2} (z + \frac{1}{z}))^2} = \ointop_{|z| = 1}  \frac{4zdz}{i(2\sqrt{6}z + \sqrt{5}(z^2 + 1))^2} = \ointop_{|z| = 1} \frac{4zdz}{i \left[ \sqrt{5}(z - \frac{1 - \sqrt{6}}{\sqrt{5}}) (z + \frac{1 - \sqrt{6}}{\sqrt{5}})\right]^2}
+        \]
+        Таким образом, подынтегральная функция имеет 2 особые точки: $z = \frac{(1 - \sqrt{6})}{\sqrt{5}}; \quad z = \frac{(- \sqrt{6} - 1)}{\sqrt{5}}$ \\
+        Точка $ z = \frac{(- \sqrt{6} - 1)}{\sqrt{5}}$ не попадает в область, ограниченную контуром интегрирования. \\
+        Точка $z = \frac{(1 - \sqrt{6})}{\sqrt{5}}$ является полюсом второго порядка. Необходимо вычислить вычет в этой точке:
+        \[
+         \underset{z = \frac{(1 - \sqrt{6})}{\sqrt{5}}}{\text{res}}\ f(z) = \lim\limits_{z\rightarrow \frac{(1 - \sqrt{6})}{\sqrt{5}}} \frac{d}{dz}\left[ f(z)(z -  \frac{(1 - \sqrt{6})}{\sqrt{5}})^2\right] = \lim\limits_{z\rightarrow \frac{(1 - \sqrt{6})}{\sqrt{5}}} \frac{d}{dz} \frac{4z}{i \left[\sqrt{5}(z + \frac{(\sqrt{6} + 1)}{\sqrt{5}})^2 \right] } = 
+        \]
+        \[
+        \frac{4i}{5i} \cdot \lim\limits_{z\rightarrow \frac{(1 - \sqrt{6})}{\sqrt{5}}} \frac{d}{dz} \frac{z}{(z + \frac{(\sqrt{6} + 1)}{\sqrt{5}})^2} = \frac{4i}{5i} \cdot \lim\limits_{z\rightarrow \frac{(1 - \sqrt{6})}{\sqrt{5}}} \left[-5\frac{z\sqrt{5} - 1 - \sqrt{6}}{(z\sqrt{5} + 1 + \sqrt{6})^3} \right] = -\frac{4}{i} \cdot \frac{1 - \sqrt{6} - 1 - \sqrt{6}}{(1 - \sqrt{6} + 1 + \sqrt{6})^3} = -\frac{4}{i} \cdot \frac{-2\sqrt{6}}{2^3} = \frac{\sqrt{6}}{i}
+        \]
+        По основной теореме Коши о вычетах получаем:
+        \[
+         \ointop_{|z| = 1}\frac{4zdz}{\sqrt{5} \left(z -\frac{1 - \sqrt{6}}{\sqrt{5}}) (z + \frac{ \sqrt{6} + 1}{\sqrt{5}} \right)} = 2\pi i \sum\limits_{i = 1}^{n} resf(z) = 2\pi i \cdot \frac{\sqrt{6}}{i} = 2\pi\sqrt{6}
+        \]
+        \subsection{Ответ: $2\pi\sqrt{6}$}
+
+        \section{Вычислить интеграл: }
+        \[
+        \int_{-\infty}^{+\infty} \frac{dx}{(x^2 + 1)^2(x^2 + 5)^2}
+        \]
+         \subsection{Решение:}
+         Применяем формулу: 
+         \[
+        \int_{-\infty}^{+\infty} R(x)dx = 2\pi i \sum\limits_{m} \underset{z_m}{\text{res}}R(z) 
+        \]
+        Сумма вычетов берется по всем полюсам полуплоскости $Im{z} > 0$. Преобразуем исходный интеграл:
+        \[
+        \int_{-\infty}^{+\infty} \frac{dx}{(x^2 + 1)^2(x^2 + 5)^2} = \int_{-\infty}^{+\infty}  \frac{dz}{(z^2 + 5)^2 (z^2 + 1)^2}
+        \]
+        Особые точки:
+        $$z = i\sqrt{5} \quad (Im{z} > 0); \quad z = -i\sqrt{5} \quad (Im{z} < 0)$$
+        $$z = i \quad (Im{z} > 0); \quad z = -i \quad (Im{z} < 0)$$
+        Точка z = i является полюсом второго порядка и вычет в ней равен:
+        \[
+         \underset{z = i}{\text{res}}f(x) =  \lim\limits_{z\rightarrow i} \frac{d}{dz} \left[f(z)(z - i)^2 \right] =  \lim\limits_{z\rightarrow i} \frac{d}{dz} \left[\frac{1}{(z + i)^2(z^2 + 5)^2} \right] =  \lim\limits_{z\rightarrow i} \left[\frac{-2(3z^2 + 5 + 2iz)}{(2 + i)^3(z^2 + 5)^3} \right] = 0
+        \]
+        Точка $z = i\sqrt{5}$ является полюсом второго порядка и вычет в ней равен:
+        \[
+         \underset{z =  i\sqrt{5}}{\text{res}}f(x) =  \lim\limits_{z\rightarrow  i\sqrt{5}} \frac{d}{dz} \left[ f(z)(z - i\sqrt{5})^2\right] =  \lim\limits_{z\rightarrow  i\sqrt{5}} \frac{d}{dz} \left[\frac{1}{(z + i\sqrt{5})^2(z^2 + 1)^2} \right] =  \lim\limits_{z\rightarrow  i\sqrt{5}} \frac{-2(3z^2 + 1 + 2\sqrt{5}iz)}{(z + i\sqrt{5})^3 (z^2 + 1)^3} = -\frac{3i\sqrt{5}}{800}
+        \]
+        \[
+        \int_{-\infty}^{+\infty} \frac{dx}{(x^2 + 1)^2(x^2 + 5)^2} = 2\pi i \left(-\frac{3i\sqrt{5}}{800} \right) = \frac{3\pi\sqrt{5}}{400}
+        \]
+        \subsection{Ответ: $\quad \frac{3\pi\sqrt{5}}{400}$}
+
+         \section{Вычислить интеграл: }
+        \[
+        \int_{-\infty}^{+\infty} \frac{x\cos{x}}{x^2 - 2z + 17} ,\ dx
+        \]
+        \subsection{Решение:}
+        Воспользуемся формулой
+        \[
+        \int_{-\infty}^{+\infty} R(x)\cos{\lambda}xdx = Re \left[2\pi i\sum\limits_{m} \underset{z_m}{\text{res}}R(z)e^{i\lambda z} \right], \lambda > 0
+        \]
+        Исходная функция полностью удовлетворяет условиям применения данной формулы. Необходимо найти $z_m$:
+        $$x^2 - 2z + 17 = 0 \rightarrow  z_{1,2} = 1  \pm 4i$$
+        Сумма вычетов берется по верхней полуплоскости $Im{z} > 0$. Из этого следует $z_m = \{1 + 4i\}$
+        Это особая точка является полюсом. Необходимо найти в ней вычет: 
+        $$ \underset{z = 1 + 4i}{\text{res}}R(z)e^{i\lambda z} = \lim\limits_{z \rightarrow 1 + 4i} \frac{z(z - 1 - 4i)}{z^2 - 2z + 17} \cdot e^{iz} =  \lim\limits_{z \rightarrow 1 + 4i} \frac{z}{z - 1 + 4i} \cdot  e^{iz} = \frak{1 + 4i}{1 + 4i - 1 + 4i}  e^{i(1 + 4i)} =$$
+        $$= \frac{1 + 4i}{8i} \cdot e^{i - 3} = \left(\frac{1}{2} - \frac{i}{8} \right)e^{-4} (\cos{1} - i\cos{1})$$
+        \[
+        \int_{-\infty}^{+\infty} R(x)\cos{\lambda}xdx = Re \left[2\pi i\sum\limits_{m} \underset{z_m}{\text{res}}R(z)e^{i\lambda z} \right] = \frac{\pi}{4}e^{-4} \cos{1} + \pi e^{-4} \sin{1} 
+        \]
+        \subsection{Ответ: $\quad \frac{\pi}{4}e^{-4} \cos{1} + \pi e^{-4} \sin{1} $}
+
+        \section{Найти  оригинал по заданному изображению: $\frac{1}{p(p^3 + 1)}$ }
+        \subsection{Решение:}
+        Необходимо представитть выражение, используя метод неопределенных коэффициентов:
+        \[
+        \frac{1}{p(p^3 + 1)} = \frac{1}{p(p - 1)(p^2 - p + 1)} = \frac{A}{p} + \frac{B}{p + 1} + \frac{Cp + D}{p^2 - p + 1} = \frac{Ap^3 + A + Bp^3 - Bp^2 + Bp + Cp^3 + Cp^2 + Dp^2 + Dp}{p(p + 1)(p^2 - p + 1)} = 
+        \]
+        \[
+        = \frac{(A + B + C)p^3 + (-B + C + D)p^2 + (B + D)p + A}{p(p + 1)(p^2 - p + 1)}
+        \]
+        
+        \[ \begin{cases} A + B + C = 0 \\ -B + C + D = 0 \\ B + D = 0 \\ A = 1 \end{cases} \longrightarrow \begin{cases} A = 1 \\ B = -\frac{1}{3} \\ C = - \frac{2}{3} \\ D = \frac{1}{3} \end{cases} \]
+        Таким образом:
+        $$\frac{1}{p(p^3 + 1)} = \frac{1}{p} - \frac{1}{3} \cdot \frac{1}{p + 1} - \frac{2}{3} \cdot \frac{p}{p^2 - p + 1} + \frac{1}{3} \cdot \frac{1}{p^2 - p + 1}$$
+        $$\frac{1}{p} - \frac{1}{3} \cdot \frac{1}{p + 1} - \frac{2}{3} \cdot \frac{p}{p^2 - p + 1} + \frac{1}{3} \cdot \frac{1}{p^2 - p + 1} = \frac{1}{p} - \frac{1}{3} \cdot \frac{1}{p + 1} - \frac{2}{3} \cdot \frac{p}{(p - \frac{1}{2})^2 + \frac{3}{4}} + \frac{1}{3} \cdot \frac{1}{(p - \frac{1}{2})^2 + \frac{3}{4}}$$
+        $$\frac{1}{p} - \frac{1}{3} \cdot \frac{1}{p + 1} - \frac{2}{3} \cdot \frac{p - \frac{1}{2}}{(p - \frac{1}{2})^2 + \frac{3}{4}} \longrightarrow 1 - \frac{1}{3} e^{-1} - \frac{2}{3}e^{\frac{1}{2}} \cos{\frac{\sqrt{3}}{2}}t$$
+        \subsection{Ответ: $\quad 1 - \frac{1}{3} e^{-1} - \frac{2}{3}e^{\frac{1}{2}} \cos{\frac{\sqrt{3}}{2}}t $}
+
+
+        \section{Найти решения дифференциального уравнения, удовлетворяющие условиям: $y`` - 4y = \th^2{2t}$ }
+        \subsection{Решение:}
+        $$p^2y(p) - pC_1 - C_2 - 4 \cdot\overline{y}(p) = 4\cdot \overline{f}(p) \longrightarrow (p^2 - 4) \cdot \overline{y}(p) = \overline{f}(p) + pC_1 + C_2$$
+        $$\overline{y}(p) = \frac{\overline{f} + pC_1 + C_2}{p^2 - 4} = \frac{\overline{f}(p)}{p^2 - 4} + C_1 \cdot \frac{p}{p^2 - 4} + \frac{C_2}{2} \cdot \frac{2}{p^2 - 4}$$
+        $$y(t) = C_1 \cdot \ch{2t} + \frac{C_2}{2} \sh{2t}$$
+        $$\frac{\overline{f}(p)}{p^2 - 4} = \frac{1}{2}(\overline{f}(p) \cdot \frac{2}{p^2 - 4}) = \frac{1}{2} \cdot f(t) * \sh{2t}$$
+        \[
+        \int_{0}^{t} \th{2\tau} \cdot \sh{2(t - \tau)},\ d\tau = \int_{0}^{t} \th^2{2\tau} (\sh{2t} + \ch{2\tau} - \ch{2t} \cdot \sh{2\tau}),\ d\tau = \sh{2t} \int_{0}^{t} \frac{\sh^2{2\tau}}{\ch{2\tau}} - \ch{2t} \int_{0}^{t} \frac{\sh^3{2t}}{\ch^3{2\tau}}, dt
+        \]
+        \[
+        \int_{0}^{t} \frac{\tanh(2\tau) \cdot \sinh(2(t - \tau))}{2}, d\tau
+        \]
+        $$u = \tanh(2\tau) \quad\quad dv = \sinh(2(t - \tau))$$
+        \[
+        = \frac{\sinh(2t)}{2} - \int_{0}^{t} \frac{\sinh^2(2\tau)}{\cosh(2\tau)}, d\tau = \frac{\sinh(2t)}{2} - \int_{0}^{t} \frac{1}{2}\left(\cosh(2\tau) - 1\right), d\tau = \frac{\sinh(2t)}{2} - \left[\frac{\sinh(2\tau)}{4} - \frac{\tau}{2}\right]_{0}^{t} 
+        \]
+        \[
+        = \frac{\sinh(2t)}{2} - \left(\frac{\sinh(2t)}{4} - \frac{t}{2}\right) = \frac{\sinh(2t)}{4} + \frac{t}{2}
+        \]
+        \subsection{Ответ:$\quad \frac{\sinh(2t)}{4} + \frac{t}{2}$}
+        
+        \section{Операционным методом решить задачу Коши $y`` - 9y = \sin{t} - \cos{t}, \quad y(0) = -3, \quad y`(0) = 2$ }
+        \subsection{Решение:}
+        
+        $$p^2Y(p) - py(0) - y`(0) - 9Y(p) = \frac{1}{p^2 + 1} - \frac{p}{p^2 + 1}$$
+        $$ p^2Y(p) + 3p + 2 - 9Y(p) = \frac{1}{p^2 + 1} - \frac{p}{p^2 + 1}$$
+        $$(p^2 - 9)Y(p) = \frac{1}{p^2 + 1} - \frac{p}{p^2 + 1} - 3p - 2 $$
+        $$Y(p) = \frac{1}{(p^2 + 1)(p^2 - 9)} - \frac{p}{(p^2 + 1)(p^2 - 9)} - \frac{3p}{(p^2 - 9)} - \frac{2}{(p^2 - 9)}$$
+        Необходимо найти оригинал y(t):
+        $$Y(p) = \frac{1}{(p^2 + 1)(p^2 - 9)} - \frac{p}{(p^2 + 1)(p^2 - 9)} - \frac{3p}{(p^2 - 9)} - \frac{2}{(p^2 - 9)} = $$
+        $$ = \frac{1}{10} \cdot \frac{1}{p^2 - 9} - \frac{1}{10} \cdot \frac{1}{p^2 + 1} - \frac{1}{10} \cdot \frac{p}{p^2 - 9} + \frac{1}{10} \cdot \frac{p}{p^2 + 1} - \frac{3p}{p^2 - 9} - \frac{2}{p^2 - 9} = $$
+        $$-\frac{19}{10} \cdot \frac{1}{p^2 - 9} - \frac{1}{10} \cdot \frac{1}{p^2 + 1} - \frac{31}{10} \cdot \frac{p}{p^2 - 9} + \frac{1}{10} \cdot \frac{p}{p^2 + 1} = -\frac{19}{30}\cdot \frac{3}{p^2 - 9} - \frac{1}{10} \cdot \frac{1}{p^2 + 1} - \frac{31}{10} \cdot \frac{p}{p^2 - 9} + \frac{1}{10} \cdot \frac{p}{p^2 + 1} \rightarrow$$
+        $$\rightarrow y(t) = -\frac{19}{30} \cdot \sh{3t} - \frac{1}{10} \cdot \sin{t} - \frac{31}{10} \cdot \ch{3t} + \frac{1}{10} \cdot \cos{t}$$
+        \subsection{Ответ: $ \quad y(t) = -\frac{19}{30} \cdot \sh{3t} - \frac{1}{10} \cdot \sin{t} - \frac{31}{10} \cdot \ch{3t} + \frac{1}{10} \cdot \cos{t}$}
+
+        \section{Найти решение системы дифференциальных уравнений, удовлетворяющее заданному начальному условию }
+        \[
+            \begin{cases} x` = 3x + 2 \quad\quad x(0) = -1\\ y` = x + 2y \quad\quad y(0) = 1  \frac{p - 2}{p^2 - 5p + 6} \end {cases} 
+        \]
+         \subsection{Решение:}
+        Применяем преобразование Лапласа к обеим уравнениям: 
+        
+        \begin{align*} sX(s) - x(0) = 3X(s) + 2 \ sY(s) - y(0) & = X(s) + 2Y(s) \end{align*}
+         
+        \begin{align*} X(s) & = \frac{s+1}{s(s-3)} \ Y(s)  = \frac{2s-5}{s(s-2)(s-3)} \end{align*} 
+        Обратное преобразование Лапласа: Выполним обратное преобразование Лапласа для (X(s)) и (Y(s)) с помощью известных таблиц:  \begin{align*} x(t)  = \mathcal{L}^{-1}{X(s)} = 1 - e^{3t} \quad y(t)  = \mathcal{L}^{-1}{Y(s)} = -\frac{1}{3}e^{2t} + \frac{5}{3}e^{3t} \end{align*} 
+        \subsection{Ответ: $\quad x(t) = 1 - e^{3t}, \quad y(t) = -\frac{1}{3}e^{2t} + \frac{5}{3}e^{3t}$ }
+
+
+        
+        
+        
+\end{document}
