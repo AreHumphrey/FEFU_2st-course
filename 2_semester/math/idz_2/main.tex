@@ -298,17 +298,23 @@
 
         \section{Найти решение системы дифференциальных уравнений, удовлетворяющее заданному начальному условию }
         \[
-            \begin{cases} x` = 3x + 2 \quad\quad x(0) = -1\\ y` = x + 2y \quad\quad y(0) = 1  \frac{p - 2}{p^2 - 5p + 6} \end {cases} 
+            \begin{cases} x` = 3x + 2 \quad\quad x(0) = -1\\ y` = x + 2y \quad\quad y(0) = 1   \end {cases} 
         \]
          \subsection{Решение:}
-        Применяем преобразование Лапласа к обеим уравнениям: 
-        
-        \begin{align*} sX(s) - x(0) = 3X(s) + 2 \ sY(s) - y(0) & = X(s) + 2Y(s) \end{align*}
-         
-        \begin{align*} X(s) & = \frac{s+1}{s(s-3)} \ Y(s)  = \frac{2s-5}{s(s-2)(s-3)} \end{align*} 
-        Обратное преобразование Лапласа: Выполним обратное преобразование Лапласа для (X(s)) и (Y(s)) с помощью известных таблиц:  \begin{align*} x(t)  = \mathcal{L}^{-1}{X(s)} = 1 - e^{3t} \quad y(t)  = \mathcal{L}^{-1}{Y(s)} = -\frac{1}{3}e^{2t} + \frac{5}{3}e^{3t} \end{align*} 
-        \subsection{Ответ: $\quad x(t) = 1 - e^{3t}, \quad y(t) = -\frac{1}{3}e^{2t} + \frac{5}{3}e^{3t}$ }
+        \[
+            \begin{cases} p\overline{x}(p) = 3 \overline{x}(p) + 2 \frac{1}{p} \\ p\overline{y}(p) = \overline{x}(p) + 2\overline{y}(p)\end {cases} 
+        \]
+        \[
+            \begin{cases} (p - 3)\cdot \overline{x}(p) = \frac{2}{p} \\ \overline{x}(p) + (2 - p)\cdot \overline{y}(p) = 0\end {cases} 
+        \]
+        \[
+        \frac{2}{p(p - 3)(p - 2)} = \frac{A}{p} + \frac{B}{p - 3} + \frac{C}{p - 2}
+        \]
 
+        $$A + B + C = 0 \quad\rightarrow\quad -5A - 2B - 3C = 0  \quad\rightarrow\quad 6A = 2$$
+        $$\overline{x}(p) = \frac{2}{p(p - 3)} = \left(\frac{1}{p - 3} - \frac{1}{p}\right) \cdot \frac{1}{2}$$
+        $$\overline{y}(p) = + \frac{2}{p\cdot(p - 3)\cdot (p - 2)} = \frac{1}{3p} + \frac{2}{3} \cdot \frac{1}{p - 3} - \frac{1}{p - 2} $$
+      
 
         
         
