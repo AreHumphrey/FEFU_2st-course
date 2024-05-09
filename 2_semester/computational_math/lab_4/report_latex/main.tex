@@ -49,6 +49,7 @@
 \begin{enumerate}
     \item $\text{Вычислить интеграл:} \quad \int_{a}^{b} f(x)dx \quad \text{по составной формуле центральных прямоугольников}; $
     \item  Получить формулу для численого интегрирования методом центральных прямоугольников в виде $ I = \displaystyle\sum_{i=0}^{n} c_i \cdot f(x_i);$
+    \item Исследовать порядок аппроксимации метода. Получить теоретическую оценку для $R_n$
     \item Провести вычислительный эксперимент для $n = \{2, 4, 8, 16,…, 2^15\} $
     \item  Сделать ввод о поведении ошибки;
     \item Сделать сравнительную характеристику изветсных методов, таких как методов прямоугольников, трапеций, формулы Симпсона для n = 10000;
@@ -75,6 +76,15 @@ $$= -\frac{23}{24} + \ln{\frac{8\sqrt{6}}{9}} \approx -0.180237 $$
 \section*{Получение формулу  $ I = \displaystyle\sum_{i=0}^{n} c_i \cdot f(x_i);$}
 $$ \displaystyle\sum_{i=0}^{n - 1} f(x_{i + \frac{1}{2}}) \int_{x_i}^{x_i + 1} \frac{x - x_i}{x_{i + \frac{1}{2}} - x_i} dx =  \displaystyle\sum_{i=0}^{n - 1} f(x_{i + \frac{1}{2}}) \int_{x_i}^{x_i + 1} \frac{2 (x - x_i)}{h} dx  =\displaystyle\sum_{i=0}^{n - 1}  f(x_{i + \frac{1}{2}}) \cdot \frac{1}{h} (x_{i + 1} - x_i )^2 = \displaystyle\sum_{i=0}^{n - 1} f(x_{i + \frac{1}{2}}) \cdot h$$
 
+\section*{Определение порядка аппроксимации:}
+
+$$R_n(x) = \int_{a}^{b} f(x) \, dx - \sum_{i=0}^{n} f(x_{i + \frac{1}{2}})\cdot h = \int_{a}^{b} f(x) dx -  \sum_{i=0}^{n} f(x_{i + \frac{1}{2}}) (x_i - x_{i - 1}) = $$
+$$ = \int_{a}^{b} f(x) dx -  \sum_{i=0}^{n} \int_{x_{i - 1}}^{x_i} f(x_{i - \frac{1}{2}}) dx =  \sum_{i=0}^{n} \int_{x_{i - 1}}^{x_i} f(x_{i - \frac{1}{2}}) dx $$
+$$ \sum_{i=0}^{n} \int_{x_{i - 1}}^{x_i} \left(f(x_{i - \frac{1}{2}}) + f`(x_{i - \frac{1}{2}) \cdot (x - x_{i - \frac{1}{2}}}) + \frac{f``(x_{i - \frac{1}{2}})}{2} \cdot (x - x_{i - \frac{1}{2}})^2  \right) = $$
+$$ = \sum_{i=0}^{n} \left( \frac{f`(x_{i - \frac{1}{2}})}{2} \left((x_{i + 1} - x_{i - \frac{1}{2}})^2 - (x_i - x_{i - \frac{1}{2}})^2 \right) + \frac{f``(x_{i - \frac{1}{2}})}{6} \cdot \left((x_{i + 1} - x_{i - \frac{1}{2}})^3 - (x_{i} - x_{i - \frac{1}{2}})^3 \right)\right) = $$
+$$\sum_{i=0}^{n} \frac{f``(x_{i - \frac{1}{2}})}{2} \cdot \left( \left(\frac{h}{2} \right)^3 - \left(-\frac{h}{2} \right)^3 \right) = \sum_{i=0}^{n} \frac{f``(x_{i - \frac{1}{2}})}{6} \cdot \left(\frac{h^3}{8} + \frac{h^3}{8} \right) \leq \frac{M}{24} \cdot (b - a) \cdot h^2 $$
+$$ \sup\limits_{a \leq x \leq b} |f''(x)| = M $$
+Из этого можно сделать вывод о том, что $\textbf{порядок аппроксимации второй}.$
 \section*{Реализация алгоритма:}
 \textbf{\large{Опредение основных функций}}
 
