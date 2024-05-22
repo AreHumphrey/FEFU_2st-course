@@ -6,15 +6,15 @@ from tabulate import tabulate
 
 data = {
     "Район": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    "x": [78, 82, 87, 78, 78, 106, 67, 82, 73, 87, 76, 115],
-    "y": [133, 148, 134, 154, 162, 185, 138, 158, 152, 162, 159, 173]
+    "x": [78, 82, 87, 79, 89, 106, 67, 88, 73, 87, 76, 115],
+    "y": [133, 148, 134, 154, 162, 195, 139, 158, 152, 162, 159, 173]
 }
 
 df = pd.DataFrame(data)
 
 X = df["x"]
 Y = df["y"]
-X = sm.add_constant(X) 
+X = sm.add_constant(X)
 model = sm.OLS(Y, X).fit()
 
 correlation = np.corrcoef(df["x"], df["y"])[0, 1]
@@ -69,7 +69,7 @@ results = {
 }
 
 results_df = pd.DataFrame(results)
-results_df.index += 1  
+results_df.index += 1
 
 if __name__ == "__main__":
     print(tabulate(results_df, headers='keys', tablefmt='grid', floatfmt=".4f"))
@@ -92,8 +92,7 @@ if __name__ == "__main__":
     print("7. Ошибка прогноза составляет {:.4f}.".format(forecast_error))
     print(
         "8. Доверительный интервал для прогноза составляет от {:.4f} до {:.4f}.".format(y_pred[0] - confidence_interval,
-                                                                                        y_pred[
-                                                                                            0] + confidence_interval))
+                                                                                        y_pred[0] + confidence_interval))
 
     print("\nОбщий вывод:")
     print("Линейная регрессия показала, что между x и y существует умеренная положительная связь. "
